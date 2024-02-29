@@ -1,4 +1,5 @@
-namespace SistemaRefaccionaria.Models
+namespace SistemaRefaccionaria.Modelos.ViewModels
+
 {
     public class ErrorViewModel
     {

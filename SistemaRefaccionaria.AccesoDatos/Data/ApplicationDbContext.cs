@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace SistemaRefaccionaria.Data
+namespace SistemaRefaccionaria.AccesoDatos.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
