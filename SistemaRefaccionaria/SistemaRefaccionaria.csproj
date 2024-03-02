@@ -24,8 +24,4 @@
     <ProjectReference Include="..\SistemaRefaccionaria.Utilidades\SistemaRefaccionaria.Utilidades.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
 </Project>
