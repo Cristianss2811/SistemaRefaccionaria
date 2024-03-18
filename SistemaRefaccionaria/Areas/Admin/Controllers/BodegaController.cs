@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaRefaccionaria.AccesoDatos.Repositorio.IRepositorio;
+using SistemaRefaccionaria.Modelos;
 
 namespace SistemaRefaccionaria.Areas.Admin.Controllers
 {
@@ -16,6 +17,25 @@ namespace SistemaRefaccionaria.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> Upsert(int? id)
+        {
+            Bodega bodega = new Bodega();
+            if (id == null)
+            {
+                //creamos un nuevo registro
+                bodega.Estado = true;
+                return View(bodega);
+
+            }
+            bodega = await _unidadTrabajo.Bodega.Obtener(id.GetValueOrDefault());
+            if (bodega == null)
+            {
+                return NotFound();
+            }
+            return View(bodega);
+        }
+
 
         #region API
         [HttpGet]
