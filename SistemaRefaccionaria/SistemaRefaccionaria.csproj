@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-SistemaRefaccionaria-870fc766-732f-4ab0-9984-3fdd0a60d34d</UserSecretsId>
   </PropertyGroup>
@@ -22,6 +21,10 @@
     <ProjectReference Include="..\SistemaRefaccionaria.AccesoDatos\SistemaRefaccionaria.AccesoDatos.csproj" />
     <ProjectReference Include="..\SistemaRefaccionaria.Modelos\SistemaRefaccionaria.Modelos.csproj" />
     <ProjectReference Include="..\SistemaRefaccionaria.Utilidades\SistemaRefaccionaria.Utilidades.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Imagenes\Productos\" />
   </ItemGroup>
 
 </Project>
