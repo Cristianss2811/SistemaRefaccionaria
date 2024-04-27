@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaRefaccionaria.AccesoDatos.Data;
 
@@ -11,9 +12,11 @@ using SistemaRefaccionaria.AccesoDatos.Data;
 namespace SistemaRefaccionaria.AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240427180436_RestaurarBD")]
+    partial class RestaurarBD
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,83 +279,6 @@ namespace SistemaRefaccionaria.AccesoDatos.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("SistemaRefaccionaria.Modelos.Departamento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Turno")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departamentos");
-                });
-
-            modelBuilder.Entity("SistemaRefaccionaria.Modelos.Empleado", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AMaterno")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("APaterno")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int>("DepartamentoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<int>("PuestoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DepartamentoId");
-
-                    b.HasIndex("PuestoId");
-
-                    b.ToTable("Empleados");
-                });
-
             modelBuilder.Entity("SistemaRefaccionaria.Modelos.Marca", b =>
                 {
                     b.Property<int>("Id")
@@ -429,40 +355,6 @@ namespace SistemaRefaccionaria.AccesoDatos.Migrations
                     b.ToTable("Productos");
                 });
 
-            modelBuilder.Entity("SistemaRefaccionaria.Modelos.Puesto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Horario")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<double>("Salario")
-                        .HasColumnType("float");
-
-                    b.Property<string>("TipoPuesto")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Puestos");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -512,25 +404,6 @@ namespace SistemaRefaccionaria.AccesoDatos.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SistemaRefaccionaria.Modelos.Empleado", b =>
-                {
-                    b.HasOne("SistemaRefaccionaria.Modelos.Departamento", "Departamento")
-                        .WithMany()
-                        .HasForeignKey("DepartamentoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("SistemaRefaccionaria.Modelos.Puesto", "Puesto")
-                        .WithMany()
-                        .HasForeignKey("PuestoId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Departamento");
-
-                    b.Navigation("Puesto");
                 });
 
             modelBuilder.Entity("SistemaRefaccionaria.Modelos.Producto", b =>

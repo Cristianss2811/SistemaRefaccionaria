@@ -20,6 +20,12 @@ namespace SistemaRefaccionaria.AccesoDatos.Data
 
         public DbSet<Producto> Productos { get; set; }
 
+        public DbSet<Puesto> Puestos { get; set; }
+
+        public DbSet<Departamento> Departamentos { get; set; }
+
+        public DbSet<Empleado> Empleados { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

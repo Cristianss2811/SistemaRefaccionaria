@@ -17,6 +17,12 @@ namespace SistemaRefaccionaria.AccesoDatos.Repositorio.IRepositorio
 
         IProductoRepositorio Producto { get; }
 
+        IPuestoRepositorio Puesto { get; }
+
+        IDepartamentoRepositorio Departamento { get; }
+
+        IEmpleadoRepositorio Empleado { get; }
+
         Task Guardar();
     }
 }

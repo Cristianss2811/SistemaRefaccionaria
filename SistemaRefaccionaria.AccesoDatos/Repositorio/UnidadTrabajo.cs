@@ -19,6 +19,12 @@ namespace SistemaRefaccionaria.AccesoDatos.Repositorio
 
         public IProductoRepositorio Producto { get; set; }
 
+        public IPuestoRepositorio Puesto { get; set; }
+
+        public IDepartamentoRepositorio Departamento { get; set; }
+
+        public IEmpleadoRepositorio Empleado { get; set; }
+
         public UnidadTrabajo(ApplicationDbContext db)
         {
             _db = db;
@@ -29,10 +35,16 @@ namespace SistemaRefaccionaria.AccesoDatos.Repositorio
             Marca = new MarcaRepositorio(_db);
 
             Producto = new ProductoRepositorio(_db);
+
+            Puesto = new PuestoRepositorio(_db);
+
+            Departamento = new DepartamentoRepositorio(_db);
+
+            Empleado = new EmpleadoRepositorio(_db);
         }
 
         public void Dispose()
-        {
+        {           
             _db.Dispose();
         }
 

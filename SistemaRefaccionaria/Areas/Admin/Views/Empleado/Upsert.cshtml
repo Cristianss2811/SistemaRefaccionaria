@@ -1,0 +1,132 @@
+﻿@model SistemaRefaccionaria.Modelos.ViewModels.EmpleadoVM
+@using SistemaRefaccionaria.Utilidades
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var titulo = "Crear nuevo Empleado";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @if (Model.Empleado.Id != 0)
+    {
+        titulo = "Editar Empleado";
+        <input asp-for="Empleado.Id" hidden />
+    }
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <h2 class="text-info">@titulo</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="container">
+                    <!--Campo Apellido Paterno-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Apellido Paterno</label>
+                            <input asp-for="Empleado.APaterno" class="form-control" />
+                            <span asp-validation-for="Empleado.APaterno" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Campo Apellido Materno-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Apellido Materno</label>
+                            <input asp-for="Empleado.AMaterno" class="form-control" />
+                            <span asp-validation-for="Empleado.AMaterno" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Campo Nombre-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nombre</label>
+                            <input asp-for="Empleado.Nombre" class="form-control" />
+                            <span asp-validation-for="Empleado.Nombre" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Campo Direccion-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Direccion</label>
+                            <input asp-for="Empleado.Direccion" class="form-control" />
+                            <span asp-validation-for="Empleado.Direccion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Campo Telefono-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Telefono</label>
+                            <input asp-for="Empleado.Telefono" class="form-control" />
+                            <span asp-validation-for="Empleado.Telefono" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Lista categoria-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Puesto</label>
+                            <select asp-for="Empleado.PuestoId" asp-items="@Model.PuestoLista" class="form-select">
+                                <option disabled selected>--Selecciona un puesto--</option>
+                            </select>
+                            <span asp-validation-for="Empleado.PuestoId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Lista categoria-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Marca</label>
+                            <select asp-for="Empleado.DepartamentoId" asp-items="@Model.DepartamentoLista" class="form-select">
+                                <option disabled selected>--Selecciona un Departamento--</option>
+                            </select>
+                            <span asp-validation-for="Empleado.DepartamentoId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Campo Estado-->
+                    <div class="row mb-2 mt-2">
+                        <div class="form-group col-md-6">
+                            <label>Estado:</label>
+                            <select asp-for="Empleado.Estado" class="form-select">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                            <span asp-validation-for="Empleado.Estado" class="text-danger"> </span>
+                        </div>
+                    </div>
+                    <!--Botones-->
+                    <br />
+                    <div class="d-grid gap-2 d-md-block">
+                        @if (Model.Empleado.Id != 0)
+                        {
+                            <partial name="_botonesActualizarYRegresar" model="Model.Empleado.Id" />
+                        }
+                        else
+                        {
+                            <button type="submit" onclick="return" class="btn btn-success">
+                                <i class="bi bi-plus-square-fill"></i>
+                                Crear
+
+                            </button>
+                            <a class="btn btn-success" asp-action="Index">
+                                <i class="bi bi-arrow-return-left"></i>
+                                Regresar
+                            </a>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
